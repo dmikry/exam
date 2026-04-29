@@ -4,6 +4,18 @@ on:
     branches: [ master, main ]
   pull_request:
     branches: [ master, main ]
+  workflow_dispatch:
+    inputs:
+      test_type:
+        description: 'Select test type to run'
+        required: true
+        default: 'ALL'
+        type: choice
+        options:
+          - ALL
+          - UI
+          - API
+
 jobs:
   playwright-tests:
     timeout-minutes: 60
@@ -12,6 +24,16 @@ jobs:
       fail-fast: false
       matrix:
         test-type: [UI, API]
+    
+    # Run if:
+    # 1. It's an automatic trigger (push/PR)
+    # 2. It's a manual trigger and 'ALL' was selected
+    # 3. It's a manual trigger and the specific test-type matches the matrix value
+    if: >
+      github.event_name != 'workflow_dispatch' || 
+      github.event.inputs.test_type == 'ALL' || 
+      github.event.inputs.test_type == matrix.test-type
+
     steps:
     - uses: actions/checkout@v4
     - uses: actions/setup-node@v4
