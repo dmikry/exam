@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
 
-test.describe('API Endpoint Tests', () => {
+test.describe('API Endpoint Tests @API', () => {
 
   test('/services endpoint should return an array of services', async ({ request }) => {
     const response = await request.get('/services');

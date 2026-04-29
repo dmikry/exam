@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
 
-test.describe('Dashboard UI Tests', () => {
+test.describe('Dashboard UI Tests @UI', () => {
 
   test('should display the main dashboard heading', async ({ page }) => {
     await page.goto('/');
