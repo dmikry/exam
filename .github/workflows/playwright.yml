@@ -17,22 +17,27 @@ on:
           - API
 
 jobs:
+  setup:
+    runs-on: ubuntu-latest
+    outputs:
+      test-types: ${{ steps.set-matrix.outputs.types }}
+    steps:
+      - id: set-matrix
+        run: |
+          if [ "${{ github.event_name }}" != "workflow_dispatch" ] || [ "${{ github.event.inputs.test_type }}" == "ALL" ]; then
+            echo "types=[\"UI\", \"API\"]" >> $GITHUB_OUTPUT
+          else
+            echo "types=[\"${{ github.event.inputs.test_type }}\"]" >> $GITHUB_OUTPUT
+          fi
+
   playwright-tests:
+    needs: setup
     timeout-minutes: 60
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
       matrix:
-        test-type: [UI, API]
-    
-    # Run if:
-    # 1. It's an automatic trigger (push/PR)
-    # 2. It's a manual trigger and 'ALL' was selected
-    # 3. It's a manual trigger and the specific test-type matches the matrix value
-    if: >
-      github.event_name != 'workflow_dispatch' || 
-      github.event.inputs.test_type == 'ALL' || 
-      github.event.inputs.test_type == matrix.test-type
+        test-type: ${{ fromJson(needs.setup.outputs.test-types) }}
 
     steps:
     - uses: actions/checkout@v4
