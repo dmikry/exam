@@ -20,7 +20,7 @@ test.describe('LLM Aggregator UI Tests @UI', () => {
     let prices = await dashboard.getPrice();
     expect(prices.input).toBe('$5.00');
     expect(prices.output).toBe('$15.00');
-    
+
     // Select Llama 3
     await dashboard.selectModelForInsight('Llama 3 (70B)');
     prices = await dashboard.getPrice();
@@ -30,7 +30,7 @@ test.describe('LLM Aggregator UI Tests @UI', () => {
 
   test('should render the Current Assignments table', async () => {
     await expect(dashboard.page.locator('h2').filter({ hasText: 'Current Assignments' })).toBeVisible();
-    
+
     const headers = dashboard.assignmentsTable.locator('th');
     await expect(headers.nth(0)).toHaveText('User');
     await expect(headers.nth(1)).toHaveText('Model');
@@ -43,7 +43,7 @@ test.describe('LLM Aggregator UI Tests @UI', () => {
 
   test('should allow assigning a model to a user', async () => {
     await dashboard.assignModelToUser('Alice Smith', 'Gemini 1.5 Pro');
-    
+
     // Check for success toast
     await expect(dashboard.toast).toBeVisible();
     await expect(dashboard.toast).toHaveText('Successfully assigned!');
