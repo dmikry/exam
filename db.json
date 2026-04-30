@@ -92,6 +92,20 @@
       "service_id": "2a007d9f-2d8c-46ef-b078-c0d7a2a1d45a",
       "tier": "Pro",
       "active_since": "2026-04-30T13:15:38.914Z"
+    },
+    "12f82e8f-384d-40c0-920c-70700d69ac93": {
+      "id": "12f82e8f-384d-40c0-920c-70700d69ac93",
+      "client_id": "ce8c1295-728f-4cc9-b8a3-7184ddc20939",
+      "service_id": "aa264f9e-04de-424c-a681-093eb5762b29",
+      "tier": "Pro",
+      "active_since": "2026-04-30T13:17:49.238Z"
+    },
+    "3c89a57e-352c-4e83-89f4-018bc3eed9cf": {
+      "id": "3c89a57e-352c-4e83-89f4-018bc3eed9cf",
+      "client_id": "0c1f1cf4-e979-410a-b1b3-b929362c119d",
+      "service_id": "2a007d9f-2d8c-46ef-b078-c0d7a2a1d45a",
+      "tier": "Pro",
+      "active_since": "2026-04-30T13:28:29.997Z"
     }
   }
 }
