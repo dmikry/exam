@@ -106,6 +106,13 @@
       "service_id": "2a007d9f-2d8c-46ef-b078-c0d7a2a1d45a",
       "tier": "Pro",
       "active_since": "2026-04-30T13:28:29.997Z"
+    },
+    "6a5682ac-345a-4ce4-8353-dc16f9867253": {
+      "id": "6a5682ac-345a-4ce4-8353-dc16f9867253",
+      "client_id": "0c1f1cf4-e979-410a-b1b3-b929362c119d",
+      "service_id": "2a007d9f-2d8c-46ef-b078-c0d7a2a1d45a",
+      "tier": "Pro",
+      "active_since": "2026-04-30T14:00:28.732Z"
     }
   }
 }
